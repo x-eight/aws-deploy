@@ -12,7 +12,7 @@ RUN pnpm install
 RUN pnpm run build
 
 ENV PORT 5000
-ENV VARIABLE "test .env dockerfile"
+ENV VARIABLE "forever .env dockerfile"
 
 EXPOSE 5000
 
