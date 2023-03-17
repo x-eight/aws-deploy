@@ -1,16 +1,36 @@
-version: 0.0
-os: ubuntu
+version: 0.2
 
-hooks:
-  ApplicationStop:
-    - location: scripts/kill_container.sh
-      timeout: 20
-      runas: ec2-user
-  AfterInstall:
-    - location: scripts/load_image.sh
-      timeout: 10
-      runas: ec2-user
-  ApplicationStart:
-    - location: scripts/start_container.sh
-      timeout: 10
-      runas: ec2-user
+env:
+  variables:
+    AWS_DEFAULT_REGION: "us-east-1"
+    AWS_ACCOUNT_ID: "126510223803"
+    IMAGE_REPO_NAME: "test"
+    IMAGE_TAG: "latest"
+    CLUSTER: "demo-cluster"
+    SERVICE: "demo-service"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - npm i -g pnpm
+      - pnpm install
+
+  pre_build:
+    commands:
+      - echo Build started on `date`
+      - pnpm run build
+      - echo Logging in to Amazon ECR...
+      - eval $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+
+  build:
+    commands:
+      - echo Creating docker image
+      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG .
+      - echo Copying docker image to repository
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+    post_build:
+      commands:
+        - echo Update Fargate service
+        - aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment 
