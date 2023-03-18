@@ -17,7 +17,7 @@ app.get("/hello", (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-  res.status(200).send({ message: "test container", port, variable });
+  res.status(204).send('Application is up and running!');
 });
 
 // start the Express server
