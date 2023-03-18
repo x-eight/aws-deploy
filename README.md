@@ -17,7 +17,7 @@ Eg.
 
 ```
 PORT = 4000
-VARIABLE="test .env"
+VARIABLE="test docker"
 ...
 ```
 
