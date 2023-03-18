@@ -1,5 +1,5 @@
 version: 0.2
-
+#buildspec.yml
 env:
   variables:
     AWS_DEFAULT_REGION: "us-east-1"
@@ -30,7 +30,7 @@ phases:
       - docker build -t 126510223803.dkr.ecr.us-east-1.amazonaws.com/test:latest .
       - echo Copying docker image to repository
       - docker push 126510223803.dkr.ecr.us-east-1.amazonaws.com/test:latest
-    post_build:
-      commands:
-        - echo Update Fargate service
-        - aws ecs update-service --cluster demo-cluster --service demo-service --force-new-deployment 
+  post_build:
+    commands:
+      - echo Update Fargate service
+      - aws ecs update-service --cluster demo-cluster --service demo-service --force-new-deployment

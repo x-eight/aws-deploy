@@ -1,13 +1,4 @@
-version: 0.2
-#buildspec.yml
-env:
-  variables:
-    AWS_DEFAULT_REGION: "us-east-1"
-    AWS_ACCOUNT_ID: "126510223803"
-    IMAGE_REPO_NAME: "test"
-    IMAGE_TAG: "latest"
-    CLUSTER: "demo-cluster"
-    SERVICE: "demo-service"
+ version: 0.2
 
 phases:
   install:
@@ -22,7 +13,7 @@ phases:
       - echo Build started on `date`
       - pnpm run build
       - echo Logging in to Amazon ECR...
-      - eval $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 
   build:
     commands:

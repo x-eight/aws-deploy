@@ -9,7 +9,15 @@ const variable = process.env.VARIABLE;
 
 // define a route handler for the default home page
 app.get("/", (req, res) => {
-  res.send({ message: "new autodeploy", port, variable });
+  res.send({ message: "autodeploy", port, variable });
+});
+
+app.get("/hello", (req, res) => {
+  res.send({ message: "hello autodeploy", port, variable });
+});
+
+app.get("/test", (req, res) => {
+  res.send({ message: "test autodeploy", port, variable });
 });
 
 // start the Express server
