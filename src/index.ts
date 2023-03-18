@@ -17,7 +17,7 @@ app.get("/hello", (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-  res.send({ message: "test autodeploy", port, variable });
+  res.status(200).send({ message: "test container", port, variable });
 });
 
 // start the Express server
