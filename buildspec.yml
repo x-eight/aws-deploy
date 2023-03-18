@@ -21,7 +21,7 @@ phases:
       - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG .
       - echo Copying docker image to repository
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-    post_build:
-      commands:
-        - echo Update Fargate service
-        - aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment 
+  post_build:
+    commands:
+      - echo Update Fargate service
+      - aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment 
