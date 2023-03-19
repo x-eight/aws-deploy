@@ -18,6 +18,12 @@ app.get("/", (req, res) => {
 });
 
 app.get("/hello", (req, res) => {
+  console.log("GET console")
+  res.send({ message: "hello autodeploy", port, variable });
+});
+
+app.post("/hello", (req, res) => {
+  console.log("POST console")
   res.send({ message: "hello autodeploy", port, variable });
 });
 
