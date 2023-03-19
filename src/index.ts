@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import { STATUS_CODES } from "http";
+import morgan from "morgan";
 
 
 dotenv.config();
@@ -8,6 +8,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(morgan('combined'));
 const port = (process.env.PORT || 5000) as number;
 const variable = process.env.VARIABLE;
 
