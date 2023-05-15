@@ -24,4 +24,4 @@ phases:
   post_build:
     commands:
       - echo Update Fargate service
-      - docker cp 21c7522d6df2:/app/styles ./drawify
+      - aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment 
