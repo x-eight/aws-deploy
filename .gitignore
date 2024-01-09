@@ -1,6 +1,1 @@
-node_modules
-build
-.env
-.test.env
-.live.env
-tsconfig.tsbuildinfo
+/node_modules

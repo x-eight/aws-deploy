@@ -1,0 +1,30 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1 # Reemplaza con tu región AWS
+      
+    - name: Pull Docker image
+      run: docker pull 415658325849.dkr.ecr.us-east-1.amazonaws.com/cicd-pipeline:latest
+      
+    - name: Delete Old docker container
+      run: docker rm -f cicd-pipeline-container || true
+      
+    - name: Run Docker Container
+      run: docker run -d -p 8080:8080 --name cicd-pipeline-container 415658325849.dkr.ecr.us-east-1.amazonaws.com/cicd-pipeline:latest
