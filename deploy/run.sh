@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cp variables/.env /var/aws-deploy
+sudo cp "$HOME/variables/.env" /var/aws-deploy/.env
 
 cd /var/aws-deploy
 
