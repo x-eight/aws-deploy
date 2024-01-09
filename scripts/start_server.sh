@@ -4,4 +4,4 @@ cd /var/www/aws-deploy
 yarn install
 
 # Inicia el servidor en segundo plano
-yarn dev &
+yarn dev
