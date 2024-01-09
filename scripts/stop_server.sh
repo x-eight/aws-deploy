@@ -1,5 +1,3 @@
 #!/bin/bash
-#echo stop-server
+echo stop-server
 #!/usr/bin/env bash
-sleep 10
-nc -zv 127.0.0.1 5000
