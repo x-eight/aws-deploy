@@ -6,6 +6,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update && sudo apt install -y yarn
 
 sudo apt install nodejs
+sudo apt install npm
 
 # install pm2 module globaly
 npm install -g pm2
