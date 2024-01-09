@@ -1,15 +1,28 @@
-# Ram Hemareddy AWS CICD Pipeline Code Deployment to AWS EC2 Instance
+## Dependencies
 
+-   pnpm
+-   node (v16)
 
-<b>User Data for Dependencies installations for AMAZON Linux 2:-</b>
+## Install
 
-#!/bin/bash<br />
-sudo yum -y update<br />
-sudo yum -y install ruby<br />
-sudo yum -y install wget<br />
-cd /home/ec2-user<br />
-wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/install<br />
-sudo chmod +x ./install<br />
-sudo ./install auto<br />
-sudo yum install -y python-pip<br />
-sudo pip install awscli<br />
+```sh
+pnpm install
+```
+
+## Start in development
+
+First create a `.env` file with the required enviroment variables, checkout `.env.example` for guidance.
+
+Eg.
+
+```
+PORT = 4000
+VARIABLE="test docker"
+...
+```
+
+Start the server running the following command:
+
+```sh
+pnpm run dev
+```# aws-deploy
