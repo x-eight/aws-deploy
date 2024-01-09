@@ -7,7 +7,6 @@ cd /var/aws-deploy
 sudo cp "$HOME/variables/.env" .env
 
 npm install
-#npm start
 
 #!/bin/bash
 
