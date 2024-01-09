@@ -12,7 +12,7 @@ app.use(morgan('combined'));
 const port = (process.env.PORT || 5000) as number;
 const variable = process.env.VARIABLE || "code_deploy";
 console.log("test")
-// define a route handler for the default home page
+
 app.get("/", (req, res) => {
   res.send({ message: "autodeploy", port, variable });
 });
