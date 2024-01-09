@@ -7,5 +7,5 @@ sudo apt update && sudo apt install -y yarn
 
 
 #cd /var/www/aws-deploy
-yarn install
+#yarn install
 
