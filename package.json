@@ -7,7 +7,7 @@
     "dev": "ts-node-dev src",
     "build": "tsc",
     "live": "node ./build",
-    "start": "pm2 start -f ./node_modules/ts-node src/index.ts"
+    "start": "pm2 start build"
   },
   "author": "",
   "license": "ISC",

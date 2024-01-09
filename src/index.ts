@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('combined'));
 const port = (process.env.PORT || 5000) as number;
-const variable = process.env.VARIABLE || "test_local";
+const variable = process.env.VARIABLE || "test_update";
 console.log("test")
 // define a route handler for the default home page
 app.get("/", (req, res) => {
