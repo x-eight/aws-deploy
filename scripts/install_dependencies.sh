@@ -7,5 +7,5 @@ sudo apt update && sudo apt install -y yarn
 
 
 # install pm2 module globaly
-yarn install -g pm2
+npm install -g pm2
 pm2 update
